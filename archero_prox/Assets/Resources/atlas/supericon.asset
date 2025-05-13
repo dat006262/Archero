@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf1a02a6bfbfdd0a496f2fe3f8c91b67, type: 3}
+  m_Name: "supericon"
+  m_EditorClassIdentifier: 
+  tag: "supericon"
+  sprites:
+  - {fileID: 21300000, guid: f40c7d41bae4419ab8742515bd0d7ca3, type: 3}
+  - {fileID: 21300000, guid: 8d722ae6f50f4477994bcba64d3d8749, type: 3}
+  - {fileID: 21300000, guid: eafd7bc1943943bfb680014749b86276, type: 3}
+  - {fileID: 21300000, guid: 3ed438b03fd04638ae536b884d2cdb54, type: 3}

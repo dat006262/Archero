@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: e9a9eb346e7a4d719f6b608b952eeb30
+timeCreated: 1568908942
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 32
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: "magic"
+  fontNames:
+  - Changa
+  fallbackFontReferences: []
+  customCharacters:
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData:
+  assetBundleName: 
+  assetBundleVariant: 

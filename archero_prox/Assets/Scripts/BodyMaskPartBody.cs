@@ -1,0 +1,8 @@
+
+
+
+
+
+public class BodyMaskPartBody : BodyMask
+{
+}

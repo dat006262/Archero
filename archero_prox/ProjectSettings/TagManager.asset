@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - HP
+  - Ma
+  - Tie
+  - Cao
+  - Mu
+  - Map_Ornament
+  - Map_Door
+  - Map_Through
+  - Exp
+  - Exp2
+  - Dun
+  - Wall_Up
+  - Wall_Down
+  - Wall_Left
+  - Wall_Right
+  - Arrow
+  - Trap
+  - FxTemporaire
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Hide
+  - Player
+  - BackGround
+  - Map
+  - Bullet
+  - Goods
+  - MapOutWall
+  - Fly
+  - Bullet2Map
+  - MapBack
+  - PlayerAbsorb
+  - Entity2MapOutWall
+  - Entity2Stone
+  - Entity2Water
+  - Stone
+  - Waters
+  - 
+  - BattleHits
+  - 
+  - PlayerAbsorbImme
+  - 
+  - 
+  - BulletResist
+  - 
+  m_SortingLayers:
+  - name: "MapBG"
+    uniqueID: 2172874595
+    locked: 0
+  - name: "Default"
+    uniqueID: 0
+    locked: 0
+  - name: "Player"
+    uniqueID: 981862993
+    locked: 0
+  - name: "UI"
+    uniqueID: 2826623779
+    locked: 0
+  - name: "Fly"
+    uniqueID: 591610027
+    locked: 0
+  - name: "BulletEffect"
+    uniqueID: 3599999855
+    locked: 0
+  - name: "BossBullet"
+    uniqueID: 3415086369
+    locked: 0
+  - name: "Hit"
+    uniqueID: 2713690627
+    locked: 0
+  - name: "SkillEffect"
+    uniqueID: 177157775
+    locked: 0

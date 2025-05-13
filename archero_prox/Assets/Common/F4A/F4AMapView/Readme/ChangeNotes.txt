@@ -1,0 +1,10 @@
+Version 1.0.2
+- Features
+	+ Character Map
+Version 1.0.1
+- Features:
+	+ Update map
+	+ Add SmartViewMapConfig
+Version 1.0.0
+- Features:
+	+ Map basic

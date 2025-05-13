@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf1a02a6bfbfdd0a496f2fe3f8c91b67, type: 3}
+  m_Name: "gameover"
+  m_EditorClassIdentifier: 
+  tag: "gameover"
+  sprites:
+  - {fileID: 21300000, guid: d6071d1fdc404c85b48780d86a96f64f, type: 3}
+  - {fileID: 21300000, guid: 3fc994ebc26846f7a985756e43bb28fc, type: 3}
+  - {fileID: 21300000, guid: 7be6c09de1ee4cbe93fa5de1970659ee, type: 3}
+  - {fileID: 21300000, guid: 67dcc16bf742487bb75e5e600ade9338, type: 3}
+  - {fileID: 21300000, guid: 17eca67aef6a46ceb4d8393cf4dcb4d2, type: 3}
