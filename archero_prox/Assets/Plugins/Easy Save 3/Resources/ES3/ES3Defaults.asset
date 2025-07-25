@@ -33,6 +33,7 @@ MonoBehaviour:
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
     - Hierarchy4.Runtime
+    - Purchasing.Common
     - StompyRobot.SRDebugger
     - StompyRobot.SRF
     - UltimateEditorEnhancer
