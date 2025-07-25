@@ -274,6 +274,8 @@ public class LayerBoxUICtrl : MediatorCtrlBase
 		string stageLayer2 = GameLogic.Hold.Language.GetStageLayer(nextLevel2);
 		Text_Target.text = GameLogic.Hold.Language.GetLanguageByTID("LayerBox_Target", stageLayer2);
 		bool flag = maxLevel >= nextLevel2;
+		Debug.Log("maxLevel:" + maxLevel);
+		Debug.Log("nextLevel2:" + nextLevel2);
 		Text_Target.gameObject.SetActive(!flag);
 		Button_Get.gameObject.SetActive(flag);
 		if (!bFirst)

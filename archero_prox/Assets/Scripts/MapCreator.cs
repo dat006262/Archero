@@ -443,7 +443,7 @@ public class MapCreator
 	private string GetTmxString(string tmxid)
 	{
 		string tmxPath = GetTmxPath(tmxid);
-        Debug.Log("@LOG GetTmxString tmxPath:" + tmxPath);
+	        Debug.Log("@LOG GetTmxString tmxPath:" + tmxPath);
         string value = string.Empty;
 		if (mMapStrings.TryGetValue(tmxPath, out value))
 		{

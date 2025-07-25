@@ -1463,6 +1463,7 @@ public class EntityBase : MonoBehaviour
 
 	private bool GetCanHitted()
 	{
+		
 		return Updater.AliveTime - HittedLastTime >= m_EntityData.HittedInterval && !m_EntityData.GetInvincible();
 	}
 
@@ -1582,6 +1583,14 @@ public class EntityBase : MonoBehaviour
 
 	public void ChangeHP(EntityBase entity, long HP)
 	{
+		if (DatCheatState.isHeroNeverDead)
+		{
+			if (Type == EntityType.Hero)
+			{
+				return;
+			}
+		
+		}
 		if (!GetIsDead())
 		{
 			ChangeHPMust(entity, HP);
