@@ -4,6 +4,16 @@
 
 
 using UnityEngine;
+using UnityEditor; 
+[CustomEditor(typeof(UIWidthScaler))]
+public class UIWidthScalerEditor : Editor
+{
+	public override void OnInspectorGUI()
+	{
+		EditorGUILayout.HelpBox("Scale theo design 720:1280 - 9:16", MessageType.Info);
+		DrawDefaultInspector();
+	}
+}
 
 public class UIWidthScaler : MonoBehaviour
 {

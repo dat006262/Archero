@@ -1,0 +1,1 @@
+[{"TypePlatform":0,"ProductName":"Angle Defend","CompanyName":"Young Stars","GameName":"Just Get Sudoku","BundleIdentifier":"com.angle.defend","Version":"1.0.0","BundleVersionCode":1,"scriptingImplementation":1,"minSdkVersion":33,"iOSSdkVersion":988,"androidBuildSystem":1}]
