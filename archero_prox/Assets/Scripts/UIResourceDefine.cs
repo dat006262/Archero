@@ -7,15 +7,15 @@ using System.Collections.Generic;
 
 public class UIResourceDefine
 {
-	public class WindowData
+	public class WindowData	
 	{
-		public string ClassName;
+		public string ClassName;//Name Script
 
-		public WindowMediator.LayerType LayerType;
+		public WindowMediator.LayerType LayerType; // Layer trên Hierarchy
 
-		public bool isPop;
+		public bool isPop;//Co Phai Popup khong 
 
-		public int State;
+		public int State; // 0->Chỉ mở Main| 1->Chỉ mở inGame| 3 ->Ad Inside và thanh tài nguyên | 2-> Còn lai
 	}
 
 	public static Dictionary<WindowID, WindowData> windowClass = new Dictionary<WindowID, WindowData>

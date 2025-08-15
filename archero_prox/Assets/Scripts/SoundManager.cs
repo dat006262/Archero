@@ -8,7 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TableTool;
 using UnityEngine;
-
+[DefaultExecutionOrder(100)]
 public class SoundManager : MonoBehaviour
 {
 	public class SoundData

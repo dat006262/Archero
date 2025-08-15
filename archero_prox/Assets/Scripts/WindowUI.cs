@@ -49,6 +49,7 @@ public class WindowUI
 
     public static void ShowWindow(WindowID id)
     {
+	    Debug.Log("\"<color=red>ShowWindow id =</color>\" " + id.ToString());
         switch (id)
         {
             case WindowID.WindowID_Invaild:

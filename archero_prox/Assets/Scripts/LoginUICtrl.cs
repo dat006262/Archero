@@ -36,10 +36,12 @@ public class LoginUICtrl : MediatorCtrlBase
 
 	private void OnLogin()
 	{
+		
 		KillSequence();
 		DOTween.Sequence().AppendInterval(0.2f).AppendCallback(delegate
 		{
 			WindowUI.ShowWindow(WindowID.WindowID_Main);
+			Debug.Log("OpenMainAfterLogin");
 		})
 			.AppendInterval(0.3f)
 			.Append(mCanvasGroup.DOFade(0f, 0.5f).SetEase(Ease.Linear))

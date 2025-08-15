@@ -19,4 +19,9 @@ public class DatCheatMono : MonoBehaviour
     {
         LocalSave.Instance.mStage.InitMaxLevel(stage*50);
     }
+    [Button]
+    public void OpenWindow(WindowID windowID)
+    {
+        WindowUI.ShowWindow(windowID);
+    }
 }

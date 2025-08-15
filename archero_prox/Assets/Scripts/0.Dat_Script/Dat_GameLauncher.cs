@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Dxx.Net;
 using Dxx.Util;
+using GameProtocol;
 using TableTool;
 using UnityEngine;
+
 
 public class Dat_GameLauncher : MonoBehaviour
 {
@@ -50,11 +52,111 @@ public class Dat_GameLauncher : MonoBehaviour
         LocalSave.Instance.InitData();
         LocalSave.Instance.BattleIn_CheckInit();
         GameLogic.Hold.Guide.Init();
-        //_InitNameGenerator();
+        _InitNameGenerator();//This not do anything
         SdkManager.InitSdks();
         NetManager.mNetCache.Init();
         NetManager.StartPing();
         WindowUI.Init();
-        //_InitPureMVC();
+        _InitPureMVC();
+    }
+    protected void _InitNameGenerator()
+    {
+    }
+    protected void _InitPureMVC()
+    {
+        new AppFacade();
+    }
+    private void Update()
+    {
+        #if ENABLE_TEST_GAME
+        update_touch();
+        #endif
+        if ((Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WindowsPlayer) && UnityEngine.Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (Time.time - touchTime > 2f)
+            {
+                touchTime = Time.time;
+                CInstance<TipsUIManager>.Instance.Show(GameLogic.Hold.Language.GetLanguageByTID("再按一次退出游戏"), (float)GameLogic.Height * 0.12f);
+            }
+            else
+            {
+                Application.Quit();
+            }
+        }
+      
+    }
+   
+
+    private void update_touch()
+    {
+        if (UnityEngine.Input.GetKeyUp(KeyCode.P))
+        {
+            bPause = !bPause;
+            GameLogic.SetPause(bPause);
+        }
+        if (UnityEngine.Input.GetKeyUp(KeyCode.F))
+        {
+            CameraControlM.CameraFollow = !CameraControlM.CameraFollow;
+        }
+        if (UnityEngine.Input.GetKeyUp(KeyCode.T))
+        {
+        }
+        if (UnityEngine.Input.GetKeyUp(KeyCode.V))
+        {
+            //Test UI SHOW REWARD
+            List<Drop_DropModel.DropData> list = new List<Drop_DropModel.DropData>();
+            list.Add(new Drop_DropModel.DropData
+            {
+                type  = PropType.eCurrency,
+                id    = 1,
+                count = 2000
+            });
+            list.Add(new Drop_DropModel.DropData
+            {
+                type  = PropType.eCurrency,
+                id    = 2,
+                count = 100
+            });
+            list.Add(new Drop_DropModel.DropData
+            {
+                type  = PropType.eCurrency,
+                id    = 3,
+                count = 10
+            });
+            list.Add(new Drop_DropModel.DropData
+            {
+                type  = PropType.eCurrency,
+                id    = 4,
+                count = 3
+            });
+            if (MathDxx.RandomBool())
+            {
+                list.Add(new Drop_DropModel.DropData
+                {
+                    type  = PropType.eEquip,
+                    id    = 1040101,
+                    count = 1
+                });
+                list.Add(new Drop_DropModel.DropData
+                {
+                    type  = PropType.eEquip,
+                    id    = 1040102,
+                    count = 1
+                });
+                list.Add(new Drop_DropModel.DropData
+                {
+                    type  = PropType.eEquip,
+                    id    = 30101,
+                    count = 5
+                });
+                list.Add(new Drop_DropModel.DropData
+                {
+                    type  = PropType.eEquip,
+                    id    = 30103,
+                    count = 10
+                });
+            }
+            WindowUI.ShowRewardSimple(list);
+        }
     }
 }

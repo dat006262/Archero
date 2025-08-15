@@ -76,6 +76,9 @@ public class GameLauncher : MonoBehaviour
 
 	private void Update()
 	{
+#if ENABLE_TEST_GAME
+		update_touch();
+#endif
 		if ((Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WindowsPlayer) && UnityEngine.Input.GetKeyDown(KeyCode.Escape))
 		{
 			if (Time.time - touchtime > 2f)
@@ -90,38 +93,7 @@ public class GameLauncher : MonoBehaviour
 		}
 	}
 
-	private void buy_gold()
-	{
-		CDiamondToCoin cDiamondToCoin = new CDiamondToCoin();
-		cDiamondToCoin.m_nTransID = LocalSave.Instance.SaveExtra.GetTransID();
-		cDiamondToCoin.m_nCoins = 1u;
-		cDiamondToCoin.m_nDiamonds = 1u;
-		NetManager.SendInternal(cDiamondToCoin, SendType.eForceOnce, delegate(NetResponse response)
-		{
-#if ENABLE_NET_MANAGER
-			if (response.IsSuccess && response.data != null && response.data is CRespDimaonToCoin)
-			{
-				CRespDimaonToCoin cRespDimaonToCoin = response.data as CRespDimaonToCoin;
-				LocalSave.Instance.UserInfo_SetDiamond((int)cRespDimaonToCoin.m_nDiamonds);
-				LocalSave.Instance.UserInfo_SetGold((int)cRespDimaonToCoin.m_nCoins);
-				buy_gold();
-			}
-			else if (response.error != null)
-			{
-				CInstance<TipsUIManager>.Instance.ShowCode(response.error.m_nStatusCode, 2);
-			}
-#else
-            CRespDimaonToCoin cRespDimaonToCoin = new CRespDimaonToCoin()
-            {
-                m_nCoins = 1u,
-                m_nDiamonds = 1u
-            };
-            LocalSave.Instance.UserInfo_SetDiamond((int)cRespDimaonToCoin.m_nDiamonds);
-            LocalSave.Instance.UserInfo_SetGold((int)cRespDimaonToCoin.m_nCoins);
-            buy_gold();
-#endif
-        });
-    }
+	
 
 	private void update_touch()
 	{
@@ -136,7 +108,7 @@ public class GameLauncher : MonoBehaviour
 		}
 		if (UnityEngine.Input.GetKeyUp(KeyCode.T))
 		{
-			buy_gold();
+		
 		}
 		if (UnityEngine.Input.GetKeyUp(KeyCode.V))
 		{
