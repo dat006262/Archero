@@ -224,7 +224,7 @@ public class MainUIPageBattleCtrl : MediatorCtrlBase
 			DOTween.Sequence().AppendInterval(0.4f).AppendCallback(delegate
 			{
 				WindowUI.ShowMask(value: false);
-				PlayInternal();
+			 	PlayInternal();
 			});
 		}
 	}

@@ -672,6 +672,16 @@ public class UIResourceDefine
 				ClassName = "ReportMediator",
 				LayerType = WindowMediator.LayerType.eFront
 			}
+		},
+		{
+			WindowID.WindowID_DatTestPopup,
+			new WindowData
+			{
+				ClassName = "DatTestPopupUIMediator",
+				LayerType = WindowMediator.LayerType.eFront,
+				isPop = true,
+				State = 0
+			}
 		}
 	};
 

@@ -278,6 +278,7 @@ public class RoomGenerateBase
 		opendoorIndex = -1;
 		if (LocalSave.Instance.BattleIn_GetIn())
 		{
+			//Tiep tuc man dang choi
 			currentRoomID = LocalSave.Instance.BattleIn_GetRoomID();
 			Room room = new Room();
 			room.SetRoomID(currentRoomID);
@@ -286,6 +287,7 @@ public class RoomGenerateBase
 		}
 		else
 		{
+			//choi moi
 			currentRoomID = 0;
 			Room room2 = new Room();
 			room2.SetRoomID(currentRoomID);
@@ -301,6 +303,7 @@ public class RoomGenerateBase
 		}
 		OnStartGame();
 		GotoNextDoor();
+	
 		OnStartGameEnd();
 	}
 
@@ -447,6 +450,11 @@ public class RoomGenerateBase
 
 	private void RandomNextRoom()
 	{
+		//Phương thức này đảm bảo rằng:
+		//- Phòng hiện tại và phòng kếtiếp được khởi tạo nếu chưa có.
+		//- Phòng đầu tiên (ID = 0) được gán bản đồ đặc biệt "emptyroom".
+		//- Có kiểm tra lỗi nếu maxRoomID không hợp lệ.
+
 		int currentRoomID = this.currentRoomID;
 		if (currentRoomID <= maxRoomID && !roomList.ContainsKey(currentRoomID))
 		{

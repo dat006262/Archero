@@ -57,6 +57,7 @@ public class BattleModuleMediator : WindowMediator, IMediator, INotifier
 
 	protected override void OnRegisterEvery()
 	{
+		Debug.Log("BattleModuleMediator OnRegisterEvery");;
 		GameMode mode = GameLogic.Hold.BattleData.GetMode();
 		mCurrentModeCtrl = null;
 		mModeCtrlList.TryGetValue(mode, out mCurrentModeCtrl);
@@ -99,6 +100,7 @@ public class BattleModuleMediator : WindowMediator, IMediator, INotifier
 			gameObject.SetParentNormal(_MonoView.transform);
 			mCurrentModeCtrl = gameObject.GetComponentInChildren<MediatorCtrlBase>();
 			mCurrentModeCtrl.Init();
+			
 			if (mModeCtrlList.ContainsKey(mode))
 			{
 				mModeCtrlList[mode] = mCurrentModeCtrl;
@@ -113,6 +115,7 @@ public class BattleModuleMediator : WindowMediator, IMediator, INotifier
 			mCurrentModeCtrl.gameObject.SetActive(value: true);
 			mCurrentModeCtrl.transform.SetAsLastSibling();
 		}
+	
 		GameLogic.Release.Mode.Init();
 		CameraControlM.Instance.ResetCameraSize();
 		mCurrentModeCtrl.Open();

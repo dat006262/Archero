@@ -48,8 +48,10 @@ public class ReleaseModeManager
 		CreatePlayer();
 		LocalSave.Instance.BattleIn_Restore();
 		CreateJoy();
-		SwitchMode();
-		startdrop();
+		SwitchMode();//Map Create
+		
+		startdrop();//Player Create
+		
 	}
 
 	public void DeInit()
@@ -97,6 +99,7 @@ public class ReleaseModeManager
 		}
 		RoomGenerate.Init();
 		RoomGenerate.StartGame();
+
 		RoomGenerate.SetGuideEndAction(GuideEndAction);
 	}
 

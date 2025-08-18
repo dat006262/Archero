@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using PureMVC.Patterns;
 using Sirenix.OdinInspector;
 using TableTool;
 using UnityEngine;
@@ -23,5 +24,16 @@ public class DatCheatMono : MonoBehaviour
     public void OpenWindow(WindowID windowID)
     {
         WindowUI.ShowWindow(windowID);
+    }
+
+    [Button]
+    public void TestNotification()
+    {
+        Facade.Instance.SendNotification("DatTESTEVENT");
+    }
+    [Button]
+    public void TestEvent()
+    {
+        Facade.Instance.SendNotification("UseCurrencyKey");
     }
 }

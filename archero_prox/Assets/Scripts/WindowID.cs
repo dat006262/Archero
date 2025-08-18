@@ -79,5 +79,6 @@ public enum WindowID
 	WindowID_BoxOpenSingle,
 	WindowID_ServerAssert,
 	WindowID_AdInside,
-	WindowID_Report
+	WindowID_Report,
+	WindowID_DatTestPopup,
 }
