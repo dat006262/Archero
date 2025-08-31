@@ -5,6 +5,7 @@
 
 namespace TableTool
 {
+	[System.Serializable]
 	public class Stage_Level_chapter7 : LocalBean
 	{
 		public string RoomID

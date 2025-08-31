@@ -4,6 +4,7 @@
 
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -16,6 +17,8 @@ namespace TableTool
 		private short messageLength;
 
 		private int position;
+		
+		private int positionWrite;
 
 		private static readonly long t19700101 = new DateTime(1970, 1, 1, 0, 0, 0, 0).Ticks;
 
@@ -47,9 +50,12 @@ namespace TableTool
 
 		private short count_arrayfloat;
 
+		protected List<byte> byteList;//Use To Create FileStream
+
 		public LocalBean()
 		{
-			position = 0;
+			position      = 0;
+			positionWrite = 0;
 		}
 
 		public int readFromBytes(byte[] raws, int startPos)
@@ -59,6 +65,7 @@ namespace TableTool
 			try
 			{
 				messageLength = readShort();
+//				Debug.Log("messageLength"+messageLength);
 				if (!ReadImpl())
 				{
 					return -1;
@@ -70,6 +77,24 @@ namespace TableTool
 			}
 			return position;
 		}
+		public (byte[],int) writeToBytes(int startPos)
+		{
+			byteList = new List<byte>();
+			positionWrite = startPos;
+			{
+				writeShort(0);
+				List<byte> contentBytes  = WriteImpl();
+			
+//				Debug.Log("contentBytes"+contentBytes.Count);
+				short  network = IPAddress.HostToNetworkOrder((short)contentBytes.Count);;
+				byte[] bytes   = BitConverter.GetBytes(network);
+				byteList[0] = bytes[0];
+				byteList[1] = bytes[1];
+
+			}
+			return (byteList.ToArray(),positionWrite);
+		}
+
 
 		public int getLength()
 		{
@@ -87,12 +112,41 @@ namespace TableTool
 			}
 		}
 
+		protected void writeByte(byte[] datas, int buffLength)
+		{
+			if (datas == null || buffLength <= 0)
+				return;
+
+			// Đảm bảo không vượt quá độ dài của mảng
+			int actualCount = Math.Min(buffLength, datas.Length);
+
+			// Tạo mảng con chứa actualCount phần tử đầu tiên
+			byte[] subArray = new byte[actualCount];
+			Array.Copy(datas, subArray, actualCount);
+
+
+			byteList.AddRange(datas);
+
+			// Cập nhật vị trí ghi
+			positionWrite += datas.Length;
+
+		}
 		protected short readShort()
 		{
 			readBytes(datas_short, 2);
 			short network = BitConverter.ToInt16(datas_short, 0);
 			return IPAddress.NetworkToHostOrder(network);
 		}
+		protected void writeShort(short value)
+		{
+		
+			short  network = IPAddress.HostToNetworkOrder(value);
+			byte[] bytes   = BitConverter.GetBytes(network);  
+			writeByte(bytes,2);
+		}
+
+
+
 
 		protected bool readBool()
 		{
@@ -103,7 +157,13 @@ namespace TableTool
 			}
 			return false;
 		}
+		protected void writeBool( bool value)
+		{
+			writeShort( (short)(value ? 1 : 0));
+		}
 
+
+		
 		protected int readInt()
 		{
 			readBytes(datas_int, 4);
@@ -111,6 +171,17 @@ namespace TableTool
 			datas_int_i = IPAddress.NetworkToHostOrder(datas_int_i);
 			return datas_int_i;
 		}
+		protected void writeInt( int value)
+		{
+			int    network = IPAddress.HostToNetworkOrder(value);
+			byte[] bytes   = BitConverter.GetBytes(network);
+		//	Debug.Log("Gia tri int luu"+value+ "Length"+ bytes.Length+ "bytes[0]"+bytes[0]+ "bytes[1]"+bytes[1]+ "bytes[2]"+bytes[2]+ "bytes[3]"+bytes[3] );;;;
+			//byteList.AddRange(bytes);
+
+			writeByte(bytes,4);
+		}
+
+
 
 		protected long readLong()
 		{
@@ -118,6 +189,15 @@ namespace TableTool
 			long network = BitConverter.ToInt64(datas_long, 0);
 			return IPAddress.NetworkToHostOrder(network);
 		}
+		protected void writeLong( long value)
+		{
+			long   network = IPAddress.HostToNetworkOrder(value);
+			byte[] bytes   = BitConverter.GetBytes(network);       // Chuyển thành mảng byte
+			writeByte(bytes,8);
+		}
+
+
+
 
 		protected DateTime readDate()
 		{
@@ -126,6 +206,13 @@ namespace TableTool
 			num += t19700101;
 			return new DateTime(num);
 		}
+		
+		protected void writeDate( DateTime date)
+		{
+			long ticks = (date.Ticks - t19700101) / time_factor;
+			writeLong( ticks);
+		}
+
 
 		protected float readFloat()
 		{
@@ -137,6 +224,18 @@ namespace TableTool
 			return datas_float_f;
 		}
 
+		protected void writeFloat(float value)
+		{
+			byte[] bytes = BitConverter.GetBytes(value);
+			int intValue = BitConverter.ToInt32(bytes, 0);
+			intValue = IPAddress.HostToNetworkOrder(intValue);
+			byte[] networkBytes = BitConverter.GetBytes(intValue);
+			writeByte(networkBytes,8);
+
+		}
+
+
+
 		protected double readDouble()
 		{
 			byte[] array = new byte[8];
@@ -145,7 +244,18 @@ namespace TableTool
 			network = IPAddress.NetworkToHostOrder(network);
 			return BitConverter.Int64BitsToDouble(network);
 		}
+	
+		
+	
+		protected void writeDouble(double value)
+		{
+			long bits = BitConverter.DoubleToInt64Bits(value);
+			writeLong(bits);
+		}
+		
 
+
+		
 		protected int[] readArrayint()
 		{
 			short num = readShort();
@@ -155,6 +265,13 @@ namespace TableTool
 				array[i] = readInt();
 			}
 			return array;
+		}
+
+		protected void writeArrayInt(int[] array)
+		{
+			writeShort( (short)array.Length);
+			foreach (int val in array)
+				writeInt(val);
 		}
 
 		protected string[] readArraystring()
@@ -168,6 +285,13 @@ namespace TableTool
 			return array;
 		}
 
+		protected void writeArrayString( string[] array)
+		{
+			writeShort( (short)array.Length);
+			foreach (string str in array)
+				writeLocalString( str);
+		}
+
 		protected double[] readArraydouble()
 		{
 			short num = readShort();
@@ -178,6 +302,14 @@ namespace TableTool
 			}
 			return array;
 		}
+		protected void writeArrayDouble( double[] array)
+		{
+			writeShort((short)array.Length);
+			foreach (double val in array)
+				writeDouble(val);
+		}
+
+
 
 		protected bool[] readArraybool()
 		{
@@ -190,6 +322,13 @@ namespace TableTool
 			return array;
 		}
 
+		protected void writeArrayBool( bool[] array)
+		{
+			writeShort((short)array.Length);
+			foreach (bool val in array)
+				writeBool(val);
+		}
+
 		protected float[] readArrayfloat()
 		{
 			count_arrayfloat = readShort();
@@ -199,6 +338,12 @@ namespace TableTool
 				array[i] = readFloat();
 			}
 			return array;
+		}
+		protected void writeArrayFloat( float[] array)
+		{
+			writeShort((short)array.Length);
+			foreach (float val in array)
+				writeFloat(val);
 		}
 
 		protected short[] readArrayshort()
@@ -211,6 +356,13 @@ namespace TableTool
 			}
 			return array;
 		}
+		protected void writeArrayShort(short[] array)
+		{
+			writeShort( (short)array.Length);
+			foreach (short val in array)
+				writeShort(val);
+		}
+
 
 		protected long[] readArraylong()
 		{
@@ -222,6 +374,13 @@ namespace TableTool
 			}
 			return array;
 		}
+		protected void writeArrayLong(  long[] array)
+		{
+			writeShort((short)array.Length);
+			foreach (long val in array)
+				writeLong(val);
+		}
+
 
 		protected string readLocalString()
 		{
@@ -238,6 +397,20 @@ namespace TableTool
 				return string.Empty;
 			}
 		}
+		protected void writeLocalString(string value)
+		{
+			if (value == null)
+				value = string.Empty;
+
+			byte[] stringBytes = encoding.GetBytes(value);
+
+			short totalLength = (short)(stringBytes.Length + 2);
+
+			writeShort(totalLength);
+			writeByte(stringBytes, stringBytes.Length);
+		}
+
+
 
 		protected string readCommonString()
 		{
@@ -255,5 +428,13 @@ namespace TableTool
 		}
 
 		protected abstract bool ReadImpl();
+
+		protected virtual List<byte> WriteImpl()
+		{
+			
+
+			return byteList;
+		}
+
 	}
 }

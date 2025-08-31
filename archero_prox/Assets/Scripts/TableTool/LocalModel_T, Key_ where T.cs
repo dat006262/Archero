@@ -6,6 +6,7 @@
 using Dxx.Util;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using UnityEngine;
 
@@ -115,20 +116,23 @@ namespace TableTool
 			}
 			catch
 			{
+				Debug.LogError("ReadFromFile error: " + text);
 				flag = false;
 			}
 			if (!flag)
 			{
 				PlayerPrefs.SetString(text, string.Empty);
 				_BeanList.Clear();
-				try
+				//try
 				{
 					TextAsset textAsset = ResourceManager.Load<TextAsset>(FullPath);
 					byte[] bytes = textAsset.bytes;
 					if (bytes == null || bytes.Length < 4)
 					{
+						Debug.Log("Bytes is Null"+ text);
 						return false;
 					}
+			
 					int beanCount2 = GetBeanCount(bytes);
 					int startPos2 = 4;
 					for (int j = 0; j < beanCount2; j++)
@@ -138,17 +142,92 @@ namespace TableTool
 						_BeanList.Add(item2);
 					}
 				}
-				catch (Exception)
-				{
-					UnityEngine.Debug.LogError(Filename + " load error");
-					return false;
-				}
-				finally
-				{
-				}
+				// catch (Exception e)
+				// {
+				// 	Debug.Log(e.Message );
+				// 	UnityEngine.Debug.LogError(Filename + " load error");
+				// 	return false;
+				// }
 			}
 			return true;
 		}
+		public bool WriteToByte(List<T> input)
+		{
+		
+			{
+				// Tạo danh sách byte để ghi
+				List<byte> byteList = new List<byte>();
+		
+				// Ghi số lượng bean (4 byte đầu tiên)
+				int beanCount    = input.Count;
+				int networkOrder = IPAddress.HostToNetworkOrder(beanCount);
+				byteList.AddRange(BitConverter.GetBytes(networkOrder));
+				int startPos = 4;
+				// Ghi từng bean vào danh sách byte
+				for (int j = 0; j < beanCount; j++)
+				{
+					byte[] beanBytes;
+					(beanBytes,startPos) = input[j].writeToBytes(startPos); 
+					// Hàm này bạn cần định nghĩa trong class T
+					byteList.AddRange(beanBytes);
+				}
+		
+				Debug.Log("FileHAve: " + byteList.Count + " byte");
+				// Chuyển danh sách thành mảng byte
+				byte[] finalBytes = byteList.ToArray();
+		
+				// Ghi ra file
+				string fileName = Utils.FormatString("{0}.bytes", Filename);
+				string path     = Path.Combine("Assets/Resources/exceldata", fileName);
+				File.WriteAllBytes(path, finalBytes);
+		
+				return true;
+			}
+	
+		}
+
+		// public bool WriteToByte(List<T> input)
+		// {
+		// 	//try
+		// 	{
+		// 		using (MemoryStream memoryStream = new MemoryStream())
+		// 		{
+		// 			// Ghi số lượng bean vào 4 byte đầu tiên
+		// 			int beanCount    = input.Count;
+		// 			int networkOrder = IPAddress.HostToNetworkOrder(beanCount);
+		//
+		// 			// Chuyển đổi thành mảng byte
+		// 			byte[] bytes = BitConverter.GetBytes(networkOrder);
+		// 			memoryStream.Write(bytes, 0, 4);
+		// 			Debug.Log(bytes[0]);
+		// 			Debug.Log(bytes[1]);
+		// 			Debug.Log(bytes[2]);
+		// 			Debug.Log(bytes[3]);
+		// 			
+		// 			int startPos = 4;
+		// 			// Ghi từng bean vào stream
+		// 			foreach (T item in input)
+		// 			{
+		// 				byte[] beanBytes =
+		// 					item.writeToBytes(memoryStream); // Giả sử T có phương thức này
+		// 				memoryStream.Write(beanBytes, 0, beanBytes.Length);
+		// 				startPos += beanBytes.Length;
+		// 			}
+		//
+		// 			// Lưu vào file
+		// 			string fileName = Utils.FormatString("{0}.bytes", Filename);
+		// 			string fullPath = Path.Combine("Assets/Resources/exceldata", fileName);
+		// 			File.WriteAllBytes(fullPath, memoryStream.ToArray());
+		// 		
+		// 			return true;
+		// 		}
+		// 	}
+		// 	// catch (Exception ex)
+		// 	// {
+		// 	// 	UnityEngine.Debug.LogError($"WriteToByte failed for {Filename}: {ex.Message}");
+		// 	// 	return false;
+		// 	// }
+		// }
 
 		protected int GetBeanCount(byte[] raws)
 		{
@@ -159,6 +238,10 @@ namespace TableTool
 				raws[2],
 				raws[3]
 			}, 0);
+			// Debug.Log(raws[0]);
+			// Debug.Log(raws[1]);
+			// Debug.Log(raws[2]);
+			// Debug.Log(raws[3]);
 			return IPAddress.NetworkToHostOrder(network);
 		}
 

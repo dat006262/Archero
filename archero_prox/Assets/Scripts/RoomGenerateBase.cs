@@ -469,6 +469,7 @@ public class RoomGenerateBase
 				room.SetTmx(OnGetTmxID(currentRoomID));
 			}
 			roomList.Add(currentRoomID, room);
+			Debug.Log(Utils.FormatString("RandomNextRoom: {0} {1}", currentRoomID, room.TMXID));
 		}
 		int num = this.currentRoomID + 1;
 		if (maxRoomID == 0)
@@ -481,6 +482,7 @@ public class RoomGenerateBase
 			room2.SetRoomID(num);
 			room2.SetTmx(OnGetTmxID(num));
 			roomList.Add(num, room2);
+			Debug.Log(Utils.FormatString("RandomNextRoom: {0} {1}", currentRoomID, room2.TMXID));
 		}
 	}
 

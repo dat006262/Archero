@@ -317,6 +317,7 @@ public class MapCreator
 
 	public RoomGenerateBase.RoomType CheckTmxID(string TmxID)
 	{
+		Debug.Log("<color=yellow>@LOG CheckTmxID tmxid:</color>" + TmxID);
 		RoomGenerateBase.RoomType result = RoomGenerateBase.RoomType.eNormal;
 		if (TmxID.Length > 6)
 		{
