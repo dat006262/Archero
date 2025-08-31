@@ -2274,43 +2274,200 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4c1bfed607f1941960c75829935edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageLevelChapter7s: []
+  stageLevelChapter7s:
+  - RoomID: 107001
+    Notes: 
+    Attributes:
+    - Attack% + 410
+    - HPMax% + 870
+    - BodyHit% + 410
+    - ExpGet% + 0
+    - HPDrop% + 20
+    MapAttributes:
+    - TrapHit% + 410
+    StandardDefence: 0
+    RoomIDs:
+    - Level_B_0_0001
+    RoomIDs1: []
+  - RoomID: 107002
+    Notes: 
+    Attributes:
+    - Attack% + 410
+    - HPMax% + 1060
+    - BodyHit% + 410
+    - ExpGet% + 0
+    - HPDrop% + 20
+    MapAttributes:
+    - TrapHit% + 410
+    StandardDefence: 0
+    RoomIDs:
+    - Level_B_0_0001
+    - Level_B_0_0002
+    - Level_B_0_0003
+    - Level_B_0_0004
+    RoomIDs1: []
+  - RoomID: 107003
+    Notes: 
+    Attributes:
+    - Attack% + 410
+    - HPMax% + 1450
+    - BodyHit% + 410
+    - ExpGet% + 0
+    - HPDrop% + 0
+    MapAttributes:
+    - TrapHit% + 410
+    StandardDefence: 0
+    RoomIDs:
+    - Level_B_0_0001
+    - Level_B_0_0002
+    - Level_B_0_0003
+    - Level_B_0_0004
+    RoomIDs1: []
+  - RoomID: 107004
+    Notes: 
+    Attributes:
+    - Attack% + 510
+    - HPMax% + 1840
+    - BodyHit% + 410
+    - ExpGet% + 0
+    - HPDrop% + 0
+    MapAttributes:
+    - TrapHit% + 510
+    StandardDefence: 0
+    RoomIDs:
+    - Level_B_1_0001
+    - Level_B_1_0002
+    - Level_B_1_0003
+    - Level_B_1_0004
+    RoomIDs1: []
+  - RoomID: 107005
+    Notes: 
+    Attributes:
+    - Attack% + 510
+    - HPMax% + 2220
+    - BodyHit% + 410
+    - ExpGet% + 0
+    - HPDrop% - 20
+    MapAttributes:
+    - TrapHit% + 510
+    StandardDefence: 0
+    RoomIDs:
+    - Level_B_1_0001
+    - Level_B_1_0002
+    - Level_B_1_0003
+    - Level_B_1_0004
+    RoomIDs1: []
+  - RoomID: 107006
+    Notes: 
+    Attributes:
+    - Attack% + 510
+    - HPMax% + 2610
+    - BodyHit% + 410
+    - ExpGet% + 0
+    - HPDrop% - 20
+    MapAttributes:
+    - TrapHit% + 510
+    StandardDefence: 0
+    RoomIDs:
+    - Level_B_1_0001
+    - Level_B_1_0002
+    - Level_B_1_0003
+    - Level_B_1_0004
+    RoomIDs1: []
+  - RoomID: 107007
+    Notes: 
+    Attributes:
+    - Attack% + 610
+    - HPMax% + 3000
+    - BodyHit% + 410
+    - ExpGet% + 0
+    - HPDrop% - 40
+    MapAttributes:
+    - TrapHit% + 610
+    StandardDefence: 0
+    RoomIDs:
+    - Level_B_2_0001
+    - Level_B_2_0002
+    - Level_B_2_0003
+    - Level_B_2_0004
+    RoomIDs1: []
+  - RoomID: 107008
+    Notes: 
+    Attributes:
+    - Attack% + 610
+    - HPMax% + 3380
+    - BodyHit% + 410
+    - ExpGet% + 0
+    - HPDrop% - 40
+    MapAttributes:
+    - TrapHit% + 610
+    StandardDefence: 0
+    RoomIDs:
+    - Level_B_2_0001
+    - Level_B_2_0002
+    - Level_B_2_0003
+    - Level_B_2_0004
+    RoomIDs1: []
+  - RoomID: 107009
+    Notes: 
+    Attributes:
+    - Attack% + 710
+    - HPMax% + 3770
+    - BodyHit% + 410
+    - ExpGet% + 0
+    - HPDrop% - 60
+    MapAttributes:
+    - TrapHit% + 710
+    StandardDefence: 0
+    RoomIDs:
+    - Level_B_2_0001
+    - Level_B_2_0002
+    - Level_B_2_0003
+    - Level_B_2_0004
+    RoomIDs1: []
+  - RoomID: 107010
+    Notes: 
+    Attributes:
+    - Attack% + 710
+    - HPMax% + 4250
+    - BodyHit% + 410
+    - ExpGet% + 0
+    - HPDrop% - 60
+    MapAttributes:
+    - TrapHit% + 710
+    StandardDefence: 0
+    RoomIDs:
+    - Level_B_3_0001
+    RoomIDs1: []
   TESTDATA:
   - stt: 0
-    bool1: 1
-    float1: 2.2
-    double1: 2.5
-    short1: 2
-    long1: 2
-    ArrayInt1: 01000000
-    ArrayDouble1:
-    - 2
-    ArrayBool1: 01
-    ArrayFloat1:
-    - 32.245644
-    ArrayShort1: 0200
-    ArrayLong1: 02000000000000000000000000000000
-    Name: DAT
-    TESTDATArray:
-    - 3
-    - j
-  - stt: 5
     bool1: 0
-    float1: 4
-    double1: 3
-    short1: 5
-    long1: 2
-    ArrayInt1: 20000000
-    ArrayDouble1:
-    - 32
-    ArrayBool1: 0001
-    ArrayFloat1:
-    - 2
-    ArrayShort1: 1700
-    ArrayLong1: 0000000000000000
-    Name: sa
-    TESTDATArray:
-    - da
+    float1: 0
+    double1: 0
+    short1: 0
+    long1: 0
+    ArrayInt1: 
+    ArrayDouble1: []
+    ArrayBool1: 
+    ArrayFloat1: []
+    ArrayShort1: 
+    ArrayLong1: 
+    Name: 
+    TESTDATArray: []
+  - stt: 3
+    bool1: 0
+    float1: 0
+    double1: 0
+    short1: 0
+    long1: 0
+    ArrayInt1: 
+    ArrayDouble1: []
+    ArrayBool1: 
+    ArrayFloat1: []
+    ArrayShort1: 
+    ArrayLong1: 
+    Name: 
+    TESTDATArray: []
 --- !u!1 &1654783924616005403
 GameObject:
   m_ObjectHideFlags: 0

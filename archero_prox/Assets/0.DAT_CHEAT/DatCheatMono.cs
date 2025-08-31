@@ -52,7 +52,7 @@ public class DatCheatMono : MonoBehaviour
     [Button]
     public bool TryToReadDataStageLevel7()
     {
-
+        stageLevelChapter7s = new List<Stage_Level_chapter7>();
         Stage_Level_chapter7Model tesstModel = new Stage_Level_chapter7Model();
         Debug.Log(tesstModel.GetAllBeans().Count);
         foreach (var VARIABLE in tesstModel.GetAllBeans())
@@ -62,7 +62,15 @@ public class DatCheatMono : MonoBehaviour
         return true;
     }
 
+    [Button]
+    public bool TryToWriteDataStageLevel7()
+    {
+        Stage_Level_chapter7Model tesstModel = new Stage_Level_chapter7Model();
+        bool                      result     = tesstModel.WriteToByte(stageLevelChapter7s);
+        UnityEditor.AssetDatabase.Refresh();
 
+        return result;
+    }
     //ExamCreateLocalData
     public List<Dat_TEST_LocalDATA> TESTDATA = new List<Dat_TEST_LocalDATA>();
     [Button]
@@ -182,6 +190,6 @@ public class Dat_TEST_LocalDATAModel : LocalModel<Dat_TEST_LocalDATA, string>
 
     protected override string GetBeanKey(Dat_TEST_LocalDATA bean)
     {
-        return bean.stt.ToString();
+        return bean.Name;
     }
 }

@@ -3,53 +3,27 @@
 
 
 
+using System.Collections.Generic;
+
 namespace TableTool
 {
 	[System.Serializable]
 	public class Stage_Level_chapter7 : LocalBean
 	{
 		public string RoomID
-		{
-			get;
-			private set;
-		}
-
+	;
 		public string Notes
-		{
-			get;
-			private set;
-		}
-
+	;
 		public string[] Attributes
-		{
-			get;
-			private set;
-		}
-
+	;
 		public string[] MapAttributes
-		{
-			get;
-			private set;
-		}
-
+	;
 		public long StandardDefence
-		{
-			get;
-			private set;
-		}
-
+	;
 		public string[] RoomIDs
-		{
-			get;
-			private set;
-		}
-
+	;
 		public string[] RoomIDs1
-		{
-			get;
-			private set;
-		}
-
+	;
 		protected override bool ReadImpl()
 		{
 			RoomID = readLocalString();
@@ -60,6 +34,19 @@ namespace TableTool
 			RoomIDs = readArraystring();
 			RoomIDs1 = readArraystring();
 			return true;
+		}
+
+		protected override List<byte> WriteImpl()
+		{
+			writeLocalString(RoomID);
+			writeLocalString(Notes);
+			writeArrayString(Attributes);
+			writeArrayString(MapAttributes);
+			writeLong(StandardDefence);
+			writeArrayString(RoomIDs);
+			writeArrayString(RoomIDs1);
+			
+			return byteList;
 		}
 
 		public Stage_Level_chapter7 Copy()
