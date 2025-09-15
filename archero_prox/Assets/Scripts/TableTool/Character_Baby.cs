@@ -8,16 +8,10 @@ namespace TableTool
 	public class Character_Baby : LocalBean
 	{
 		public string BabyID
-		{
-			get;
-			private set;
-		}
+		;
 
 		public int AttackValue
-		{
-			get;
-			private set;
-		}
+		;
 
 		protected override bool ReadImpl()
 		{

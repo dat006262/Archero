@@ -47,6 +47,20 @@ public class DatCheatMono : MonoBehaviour
         Facade.Instance.SendNotification("UseCurrencyKey");
     }
 
+    public List<Character_Char> Character_Char = new List<Character_Char>();
+
+    [Button]
+    public bool TryToReadDataCharacter_Char()
+    {
+        Character_Char = new List<Character_Char>();
+        Character_CharModel tesstModel = new Character_CharModel();
+        Debug.Log(tesstModel.GetAllBeans().Count);
+        foreach (var VARIABLE in tesstModel.GetAllBeans())
+        {
+            Character_Char.Add(VARIABLE.Copy());
+        }
+        return true;
+    }
     public List<Stage_Level_chapter7> stageLevelChapter7s = new List<Stage_Level_chapter7>();
 
     [Button]
@@ -61,7 +75,6 @@ public class DatCheatMono : MonoBehaviour
         }
         return true;
     }
-
     [Button]
     public bool TryToWriteDataStageLevel7()
     {
@@ -95,6 +108,8 @@ public class DatCheatMono : MonoBehaviour
             TESTDATA.Add(VARIABLE.Copy());
         }
     }
+    
+
 }
 [System.Serializable]
 public class Dat_TEST_LocalDATA : LocalBean

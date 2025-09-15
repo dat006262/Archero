@@ -1536,6 +1536,14 @@ public class BulletBase : PauseObject
 			TriggerTest_BeforeHit = TriggerTest_MoveDis;
 			TriggerTest_BeforeHit = MathDxx.Clamp(TriggerTest_BeforeHit, 0f, 0.8f);
 			TriggerTest_Hits = Physics.RaycastAll(TriggerTest_CurrentPos - moveDirection.normalized * TriggerTest_BeforeHit, moveDirection, FrameDistance + TriggerTest_BeforeHit, m_Data.GetLayer());
+			// Debug.DrawRay(
+			// 	TriggerTest_CurrentPos - moveDirection.normalized * TriggerTest_BeforeHit,
+			// 	moveDirection.normalized * (FrameDistance + TriggerTest_BeforeHit),
+			// 	Color.red,
+			// 	0.1f
+			// );
+
+
 		}
 		else if (boxListCount > 0)
 		{
@@ -1550,6 +1558,14 @@ public class BulletBase : PauseObject
 				Vector3 center = vector;
 				Vector3 localScale = mTransform.localScale;
 				RaycastHit[] array = Physics.BoxCastAll(center, localScale.x * boxList[i].size / 2f, moveDirection, mTransform.rotation, FrameDistance + TriggerTest_BeforeHit, m_Data.GetLayer());
+				// Debug.DrawRay(
+				// 	center,
+				// 	moveDirection.normalized * (FrameDistance + TriggerTest_BeforeHit),
+				// 	Color.green,
+				// 	0.1f
+				// );
+
+				
 				if (i == 0)
 				{
 					TriggerTest_Hits = array;
@@ -1576,6 +1592,13 @@ public class BulletBase : PauseObject
 			Vector3 origin = TriggerTest_CurrentPos - moveDirection * TriggerTest_BeforeHit;
 			Vector3 localScale2 = mTransform.localScale;
 			TriggerTest_Hits = Physics.SphereCastAll(origin, localScale2.x * sphereList[0].radius, moveDirection, FrameDistance + TriggerTest_BeforeHit, m_Data.GetLayer());
+			// Debug.DrawRay(
+			// 	origin,
+			// 	moveDirection.normalized * (FrameDistance + TriggerTest_BeforeHit),
+			// 	Color.blue,
+			// 	0.1f
+			// );
+
 		}
 		else if (capsuleListCount > 0)
 		{
@@ -1587,6 +1610,13 @@ public class BulletBase : PauseObject
 			Vector3 point2 = TriggerTest_CurrentPos - TriggerTest_vec * (capsuleList[0].height - 1f) / 2f - moveDirection * TriggerTest_BeforeHit;
 			Vector3 localScale3 = mTransform.localScale;
 			TriggerTest_Hits = Physics.CapsuleCastAll(point, point2, localScale3.x * capsuleList[0].radius, moveDirection, FrameDistance + TriggerTest_BeforeHit, m_Data.GetLayer());
+			// Debug.DrawRay(
+			// 	point,
+			// 	moveDirection.normalized * (FrameDistance + TriggerTest_BeforeHit),
+			// 	Color.yellow,
+			// 	0.1f
+			// );
+
 		}
 		if (TriggerTest_Hits == null || TriggerTest_Hits.Length <= 0)
 		{

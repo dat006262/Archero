@@ -127,6 +127,7 @@ public class BulletManager
 
 	public GameObject Get(int bulletID)
 	{
+		//Hàm này sẽ lấy đạn tìm pool đạn -> lấy đạn từ pool -> nếu pool thiếu thì tạo clone đạn rồi add vào pool . Kết quả trả ra là 2 viên đạn
 		if (mBulletList.TryGetValue(bulletID, out Queue<GameObject> value))
 		{
 			while (value.Count > 0)

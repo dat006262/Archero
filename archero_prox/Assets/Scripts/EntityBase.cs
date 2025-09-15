@@ -911,7 +911,8 @@ public class EntityBase : MonoBehaviour
 	protected void CreateModel()
 	{
 		string modelID = m_Data.ModelID;
-        //Debug.Log("@LOG CreateModel 1 modelID:" + modelID);
+		
+        Debug.Log("@LOG CreateModel 1 modelstring:" +GetBodyString(modelID));
         GameObject t = null;
         if (IsSelf)
 		{

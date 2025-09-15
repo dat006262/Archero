@@ -28,11 +28,11 @@ public class MapCreator
 
 		public float y;
 
-		public bool m_bElite;
+		public bool m_bElite;//Vệ tinh 
 
-		public bool bDivide;
+		public bool bDivide;//chia
 
-		public bool bCall;
+		public bool bCall;//Triệu hồi
 
 		public string path => Utils.GetString(mResList[GetGoodType(entityid)], entityid);
 	}
@@ -533,6 +533,7 @@ public class MapCreator
 	{
 		switch (GetGoodType(GoodsID))
 		{
+			
 		case MapGoodType.Event:
 			if (!LocalSave.Instance.BattleIn_GetIn())
 			{
@@ -611,6 +612,7 @@ public class MapCreator
 	public EntityBase CreateEntity(CreateData data)
 	{
 		GameObject gameObject = UnityEngine.Object.Instantiate(ResourceManager.Load<GameObject>(data.path));
+		Debug.Log("@LOG CreateEntity path:" + data.path);
 		gameObject.transform.SetParent(GameNode.m_Monster.transform);
 		gameObject.transform.position = new Vector3(data.x, 0f, data.y);
 		gameObject.transform.localScale = Vector3.one;
@@ -1197,8 +1199,10 @@ public class MapCreator
 		tiledata = new int[width, height];
 		XmlNodeList nodes = xmlDocument.SelectNodes("map/layer");
 		XmlNode xmlNode2 = get_node(nodes);
+		//Truy cập Data của XPathNodeList
 		string innerText = xmlNode2.SelectSingleNode("data").InnerText;
 		string[] array = innerText.Split('\n');
+		
 		for (int i = 1; i < array.Length - 1; i++)
 		{
 			string[] array2 = array[i].Split(',');

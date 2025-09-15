@@ -65,7 +65,7 @@ public class ChooseSkillUICtrl : MediatorCtrlBase
 		}
 	}
 
-	private void InitUI()
+	private void InitUI()	
 	{
 		if (!GameLogic.Self)
 		{
@@ -87,18 +87,22 @@ public class ChooseSkillUICtrl : MediatorCtrlBase
 			list = GetSkill9();
 			LocalSave.Instance.BattleIn_UpdateLevelUpSkills((int)mTransfer.type, list);
 		}
+	
 		int num = 10;
 		int num2 = 0;
 		for (int i = 0; i < 3; i++)
 		{
 			for (int j = 0; j < 3; j++)
 			{
+				//Tao ra 3*3  nut
 				chooseones[num2].Init(list[i * 3 + j], skillnameList[i]);
 				num2++;
 			}
+			//Roll
 			columns[i].Init(num, skillnameList[i]);
 			num += 5;
 		}
+	
 		for (int k = 0; k < 3; k++)
 		{
 			skillnameList[k].text = string.Empty;

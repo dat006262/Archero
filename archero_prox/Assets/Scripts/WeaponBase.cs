@@ -251,9 +251,13 @@ public class WeaponBase
 
 	private void CreateBullets()
 	{
+		//Tạo ra n đường đạn về phía trước
 		CreateBullets_(m_Entity.m_EntityData.attribute.Bullet_Forward.Value, 0f);
+		//Tạo ra n đường đạn về phía sau
 		CreateBullets_(m_Entity.m_EntityData.attribute.Bullet_Backward.Value, 180f);
+		//Tạo ra n đường đạn về chéo trái và n đường đạn chéo phải
 		CreateBullets_Side(m_Entity.m_EntityData.attribute.Bullet_ForSide.Value);
+		//Tạo ra n đường đạn về phía bên trái và  n đường đạn về phía phải
 		CreateBullets_LeftRight(m_Entity.m_EntityData.attribute.Bullet_Side.Value);
 	}
 
@@ -304,7 +308,9 @@ public class WeaponBase
 
 	private void CreateBullets_(long count, float rotaoffset)
 	{
+		// Create num la random do lech tu 0 - 180
 		float num = GameLogic.Random(0f - m_Data.RandomAngle, m_Data.RandomAngle);
+		//Tinh toan khoang cach giua cac vien dan
 		float num2 = 0.7f;
 		float num3 = num2 * (float)(count - 1);
 		for (int i = 0; i < count; i++)
@@ -312,7 +318,9 @@ public class WeaponBase
 			Vector3 offsetpos = new Vector3((float)i * num2 - num3 / 2f, 0f, 0f);
 			Transform transform = CreateBullet(offsetpos, rotaoffset + num);
 			BulletBase component = transform.GetComponent<BulletBase>();
+			//Set Data Bullet để nhận diện pool và clear bullet và phát hiện va chạm trong trường hợp không có Colider
 			component.SetBulletAttribute(new BulletTransmit(m_Entity, BulletID, bClear));
+			
 			component.SetTarget(Target, ParabolaSize);
 		}
 	}
