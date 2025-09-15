@@ -206,7 +206,7 @@ public class ReleaseManager : MonoBehaviour
 		CInstance<TipsManager>.Instance.Clear();
 		Updater.GetUpdater().OnRelease();
 		Updater.UpdaterDeinit();
-		Goods1151.DoorData.DeInit();
+		//Goods1151.DoorData.DeInit();
 		UnityEngine.Object.DestroyImmediate(GameNode.m_Battle);
 		GameNode.MapCacheNode.DestroyChildren();
 		GameLogic.Hold.Sound.DeInit();
@@ -233,7 +233,7 @@ public class ReleaseManager : MonoBehaviour
 		_GoodsCreate = null;
 		_Mode = null;
 		_Form = null;
-		Goods1151.DoorData = null;
+		//Goods1151.DoorData = null;
 		GC.Collect();
 	}
 }

@@ -131,7 +131,6 @@ namespace TableTool
 
 		private Soldier_soldierModel _Soldier_soldierModel;
 
-		private Beat_beatModel _Beat_beatModel;
 
 		private Weapon_weaponModel _Weapon_weaponModel;
 
@@ -897,17 +896,7 @@ namespace TableTool
 			}
 		}
 
-		public Beat_beatModel Beat_beat
-		{
-			get
-			{
-				if (_Beat_beatModel == null)
-				{
-					_Beat_beatModel = new Beat_beatModel();
-				}
-				return _Beat_beatModel;
-			}
-		}
+		
 
 		public Weapon_weaponModel Weapon_weapon
 		{
@@ -1096,7 +1085,6 @@ namespace TableTool
 			Skill_aloneModel skill_alone = Skill_alone;
 			Goods_waterModel goods_water = Goods_water;
 			Soldier_soldierModel soldier_soldier = Soldier_soldier;
-			Beat_beatModel beat_beat = Beat_beat;
 			Weapon_weaponModel weapon_weapon = Weapon_weapon;
 			Skill_skillModel skill_skill = Skill_skill;
 			Skill_greedyskillModel skill_greedyskill = Skill_greedyskill;
