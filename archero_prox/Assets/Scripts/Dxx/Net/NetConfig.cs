@@ -9,9 +9,9 @@ namespace Dxx.Net
 {
 	public class NetConfig
 	{
-		public const string HttpPath = "https://api-archero.habby.mobi:12020";
+		public const string HttpPath = "https://DAT-api-archero.habby.mobi:12020";
 
-		public const string HttpIAPPath = "https://api-archero.habby.mobi:12020/IAP_Verification";
+		public const string HttpIAPPath = "https://DAT-api-archero.habby.mobi:12020/IAP_Verification";
 
 		public static Dictionary<int, string> mIPs = new Dictionary<int, string>
 		{
@@ -35,16 +35,16 @@ namespace Dxx.Net
 
 		public static string GetPath(ushort sendcode, string ip)
 		{
-			string text = "https://api-archero.habby.mobi:12020";
+			string text = "https://DAT-api-archero.habby.mobi:12020";
 			if (sendcode == 15)
 			{
-				text = "https://api-archero.habby.mobi:12020/IAP_Verification";
+				text = "https://DAT-api-archero.habby.mobi:12020/IAP_Verification";
 			}
 			if (!string.IsNullOrEmpty(ip))
 			{
-				return text.Replace("api-archero.habby.mobi", ip);
+				return text.Replace("DAT-api-archero.habby.mobi", ip);
 			}
-			return "https://api-archero.habby.mobi:12020";
+			return "https://DAT-api-archero.habby.mobi:12020";
 		}
 
 		public static string GetIP(int random)
