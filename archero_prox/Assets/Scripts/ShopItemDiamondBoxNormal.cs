@@ -33,6 +33,7 @@ public class ShopItemDiamondBoxNormal : ShopItemDiamondBoxBase, AdsRequestHelper
 
 	protected override void OnInit()
 	{
+		Debug.Log("ShopItemDiamondBoxNormal.OnInit");
 		bWatchEnd = false;
 		LocalSave.Instance.mGuideData.CheckDiamondBox(NotFreeParent.transform as RectTransform, 1);
 		mData = LocalModelManager.Instance.Box_SilverNormalBox.GetBeanById(LocalSave.Instance.Stage_GetStage());

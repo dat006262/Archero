@@ -22,6 +22,9 @@ public class AppFacade : Facade, IFacade, INotifier, IDisposable
 	protected override void InitializeView()
 	{
 		base.InitializeView();
+#if ENABLE_TEST_GAME
+		PlayerPrefsEncrypt.DeleteKey("first_cg");
+#endif
 		if (!PlayerPrefsEncrypt.HasKey("first_cg"))
 		{
 			PlayerPrefsEncrypt.SetInt("first_cg", 0);

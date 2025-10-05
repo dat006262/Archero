@@ -67,6 +67,7 @@ public class MainDownCtrl : MonoBehaviour
             }
             else
             {
+                //Lock2 là BattleMain sẽ luôn dc mở khoa
                 locks[i] = false;
             }
             texts[i] = base.transform.Find(Utils.FormatString("Button_{0}/child/child/Button/fg/Text", i)).GetComponent<Text>();

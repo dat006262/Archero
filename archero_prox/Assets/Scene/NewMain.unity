@@ -224,83 +224,6 @@ MonoBehaviour:
     minSdkVersion: 33
     iOSSdkVersion: 988
     androidBuildSystem: 1
---- !u!1001 &227112969
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 174161870, guid: a62dc9e5c3c001a4f8e571c0bdd56c99, type: 3}
-      propertyPath: urlFileDataSetting
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1396508691, guid: a62dc9e5c3c001a4f8e571c0bdd56c99, type: 3}
-      propertyPath: m_Name
-      value: CoreManager (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1396508691, guid: a62dc9e5c3c001a4f8e571c0bdd56c99, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1396508693, guid: a62dc9e5c3c001a4f8e571c0bdd56c99, type: 3}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1396508693, guid: a62dc9e5c3c001a4f8e571c0bdd56c99, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1396508693, guid: a62dc9e5c3c001a4f8e571c0bdd56c99, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1396508693, guid: a62dc9e5c3c001a4f8e571c0bdd56c99, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1396508693, guid: a62dc9e5c3c001a4f8e571c0bdd56c99, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1396508693, guid: a62dc9e5c3c001a4f8e571c0bdd56c99, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1396508693, guid: a62dc9e5c3c001a4f8e571c0bdd56c99, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1396508693, guid: a62dc9e5c3c001a4f8e571c0bdd56c99, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1396508693, guid: a62dc9e5c3c001a4f8e571c0bdd56c99, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1396508693, guid: a62dc9e5c3c001a4f8e571c0bdd56c99, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1396508693, guid: a62dc9e5c3c001a4f8e571c0bdd56c99, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1675397909, guid: a62dc9e5c3c001a4f8e571c0bdd56c99, type: 3}
-      propertyPath: InfoBuilds.Array.data[0].scriptingImplementation
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2120801793, guid: a62dc9e5c3c001a4f8e571c0bdd56c99, type: 3}
-      propertyPath: m_BlockingMask.m_Bits
-      value: 1258290999
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a62dc9e5c3c001a4f8e571c0bdd56c99, type: 3}
 --- !u!1 &382935242
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,7 +334,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1258290999
 --- !u!114 &436929714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10038,7 +9961,6 @@ Canvas:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 227112969}
   - {fileID: 928961189}
   - {fileID: 5808530967931241209}
   - {fileID: 7275836199790393522}

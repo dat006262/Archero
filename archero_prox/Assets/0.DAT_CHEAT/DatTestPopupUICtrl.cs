@@ -30,7 +30,14 @@ public class DatTestPopupUICtrl : MediatorCtrlBase
     
     public override object OnGetEvent(string eventName)
     {
-        Debug.Log("DatTestPopupUICtrl: GetEvent"+eventName);
+        if (eventName != null)
+        {
+            if (eventName == "GetPos")
+            {
+                return this.transform.position+Vector3.up*100;
+            }
+        }
+        return null;
         return null;
     }
 

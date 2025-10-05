@@ -2399,6 +2399,7 @@ public class LocalSave
 			{
 				if (list[i].m_nMailID == mail.m_nMailID)
 				{
+					//Đã nhận mail rồi
 					return;
 				}
 			}
@@ -2530,7 +2531,13 @@ public class LocalSave
 				}
 			});
 		}
-
+		public void TestSendMail(CMailInfo cMailInfo)
+		{
+			AddMail(cMailInfo);
+			Facade.Instance.SendNotification("MainUI_MailUpdate");
+			Refresh();
+			
+		}
 		private void Update()
 		{
 			if (Time.realtimeSinceStartup - time > 600f)
@@ -2916,6 +2923,7 @@ public class LocalSave
 
 		public override string ToString()
 		{
+			
 			string text = string.Empty;
 			if (purchased_info != null)
 			{
@@ -3068,22 +3076,22 @@ public class LocalSave
 			}
 		}
 
-		public bool IsBoxOpenFree(TimeBoxType type)
-		{
-			if (list[type].maxcount == 0)
-			{
-				return false;
-			}
-			int id = (int)(type + 10);
-			long value = GameConfig.GetValue<long>(id);
-			long timeStamp = Utils.GetTimeStamp();
-			if (timeStamp - value >= list[type].time)
-			{
-				SetTime(type, timeStamp);
-				return true;
-			}
-			return false;
-		}
+		// public bool IsBoxOpenFree(TimeBoxType type)
+		// {
+		// 	if (list[type].maxcount == 0)
+		// 	{
+		// 		return false;
+		// 	}
+		// 	int id = (int)(type + 10);
+		// 	long value = GameConfig.GetValue<long>(id);
+		// 	long timeStamp = Utils.GetTimeStamp();
+		// 	if (timeStamp - value >= list[type].time)
+		// 	{
+		// 		SetTime(type, timeStamp);
+		// 		return true;
+		// 	}
+		// 	return false;
+		// }
 
 		public long GetTime(TimeBoxType type)
 		{
@@ -5062,14 +5070,14 @@ public class LocalSave
 		return mTimeBox.IsMaxCount(type);
 	}
 
-	public bool IsBoxOpenFree(TimeBoxType type)
-	{
-		if (mTimeBox == null)
-		{
-			return false;
-		}
-		return mTimeBox.IsBoxOpenFree(type);
-	}
+	// public bool IsBoxOpenFree(TimeBoxType type)
+	// {
+	// 	if (mTimeBox == null)
+	// 	{
+	// 		return false;
+	// 	}
+	// 	return mTimeBox.IsBoxOpenFree(type);
+	// }
 
 	public List<Drop_DropModel.DropData> GetDropTimeBoxRandom()
 	{

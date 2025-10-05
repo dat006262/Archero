@@ -82,7 +82,14 @@ public class SettingQualityCtrl : MonoBehaviour
 		}
 		else
 		{
-			GameLogic.QualityID = 3 - GameLogic.QualityID;
+			if (GameLogic.QualityID >= 2)
+			{
+				GameLogic.QualityID = 1;
+			}
+			else
+			{
+				GameLogic.QualityID++;
+			}
 		}
 		UpdateShow();
 	}

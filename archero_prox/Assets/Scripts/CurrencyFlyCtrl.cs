@@ -366,6 +366,7 @@ public class CurrencyFlyCtrl
 			Transform t = GetObject(mList[type].path, startpos, GameNode.m_Front3);
 			Vector3 b = new Vector3(GameLogic.Random(0f - range, range), GameLogic.Random(0f - range, range), 0f);
 			Vector3 endValue = startpos + b;
+			Debug.Log(Utils.FormatString("PlayFlyAnimation {0} {1} {2} {3}", type, index, b, startpos));
 			Sequence sequence = DOTween.Sequence();
 			sequence.SetUpdate(isIndependentUpdate: true);
 			CanvasGroup component = t.GetComponent<CanvasGroup>();

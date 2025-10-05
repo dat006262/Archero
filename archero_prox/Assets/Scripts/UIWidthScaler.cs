@@ -5,6 +5,7 @@
 
 using UnityEngine;
 using UnityEditor; 
+#if UNITY_EDITOR
 [CustomEditor(typeof(UIWidthScaler))]
 public class UIWidthScalerEditor : Editor
 {
@@ -14,7 +15,7 @@ public class UIWidthScalerEditor : Editor
 		DrawDefaultInspector();
 	}
 }
-
+#endif
 public class UIWidthScaler : MonoBehaviour
 {
 	private void Start()

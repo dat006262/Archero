@@ -33,10 +33,10 @@ public class ShopUICtrl : MediatorCtrlBase
 
 	private List<string> openlist = new List<string>
 	{
-		"ShopOneStageDiscount",
+		//"ShopOneStageDiscount",
 		"ShopOneDiamondBox",
-		"ShopOneDiamond",
-		"ShopOneGold"
+		//"ShopOneDiamond",
+		//"ShopOneGold"
 	};
 
 	private Dictionary<string, Func<bool>> mOpenCondition = new Dictionary<string, Func<bool>>();
@@ -65,7 +65,10 @@ public class ShopUICtrl : MediatorCtrlBase
 		Vector2 anchoredPosition = windowt.anchoredPosition;
 		rectTransform2.sizeDelta = new Vector2(x, y + anchoredPosition.y);
 		mOpenCondition.Clear();
-		mOpenCondition.Add("ShopOneDiamondBox", () => LocalSave.Instance.mGuideData.is_system_open(1) || GameLogic.Hold.Guide.mEquip.process > 0 || LocalSave.Instance.GetDiamondBoxFreeCount(LocalSave.TimeBoxType.BoxChoose_DiamondNormal) > 0 || LocalSave.Instance.GetHaveEquips(havewear: true).Count > 1);
+		mOpenCondition.Add("ShopOneDiamondBox", () => LocalSave.Instance.mGuideData.is_system_open(1) 
+		                                              || GameLogic.Hold.Guide.mEquip.process > 0 
+		                                              || LocalSave.Instance.GetDiamondBoxFreeCount(LocalSave.TimeBoxType.BoxChoose_DiamondNormal) > 0
+		                                              || LocalSave.Instance.GetHaveEquips(havewear: true).Count > 1);
 		mOpenCondition.Add("ShopOneStageDiscount", () => (!PurchaseManager.Instance.IsValid()) ? false : ShopOneStageDiscount.IsValid());
 	}
 

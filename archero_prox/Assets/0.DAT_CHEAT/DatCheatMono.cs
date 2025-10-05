@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
+using GameProtocol;
+using PureMVC.Interfaces;
 using PureMVC.Patterns;
 using Sirenix.OdinInspector;
 using TableTool;
@@ -44,7 +46,13 @@ public class DatCheatMono : MonoBehaviour
     [Button]
     public void TestEvent()
     {
-        Facade.Instance.SendNotification("UseCurrencyKey");
+        IMediator mediator = Facade.Instance.RetrieveMediator("DatTestPopupUIMediator");
+        Debug.Log((Vector3)mediator.GetEvent("GetPos")); 
+    }
+    [Button]
+    public void OpenTips(ETips eTips = ETips.Tips_NetError)
+    {
+        CInstance<TipsUIManager>.Instance.Show(eTips);
     }
 
     public List<Character_Char> Character_Char = new List<Character_Char>();
@@ -80,7 +88,12 @@ public class DatCheatMono : MonoBehaviour
     {
         Stage_Level_chapter7Model tesstModel = new Stage_Level_chapter7Model();
         bool                      result     = tesstModel.WriteToByte(stageLevelChapter7s);
+
+        #if UNITY_EDITOR
         UnityEditor.AssetDatabase.Refresh();
+#endif
+
+        
 
         return result;
     }
@@ -94,7 +107,9 @@ public class DatCheatMono : MonoBehaviour
 
         Dat_TEST_LocalDATAModel tesstModel = new Dat_TEST_LocalDATAModel();
       bool result = tesstModel.WriteToByte(TESTDATA);
-      UnityEditor.AssetDatabase.Refresh();
+      #if UNITY_EDITOR
+        UnityEditor.AssetDatabase.Refresh();
+#endif
 
       return result;
     }
@@ -109,7 +124,28 @@ public class DatCheatMono : MonoBehaviour
         }
     }
     
+    [Button(ButtonStyle.FoldoutButton)]
+    public void GetGoldCurrencyTest(int allcount=100)
+    {
+        CurrencyFlyCtrl.PlayGet(CurrencyType.Gold,allcount);
+    }
+    [Button(ButtonStyle.FoldoutButton)]
+    public void GetKeyCurrencyTest(int allcount=100)
+    {
+        CurrencyFlyCtrl.PlayGet(CurrencyType.Key,allcount);
+    }
+    [Button(ButtonStyle.FoldoutButton)]
+    public void GetxpCurrencyTest(int allcount=100)
+    {
+        CurrencyFlyCtrl.PlayGet(CurrencyType.LevelExp,allcount);
+    }
+    [Button(ButtonStyle.FoldoutButton)]
+    public void SendMailTest(CMailInfo cMailInfo)
+    {
+        LocalSave.Instance.Mail.TestSendMail(cMailInfo);
+    }
 
+ 
 }
 [System.Serializable]
 public class Dat_TEST_LocalDATA : LocalBean

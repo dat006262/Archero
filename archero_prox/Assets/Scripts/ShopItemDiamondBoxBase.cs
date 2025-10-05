@@ -141,6 +141,7 @@ public class ShopItemDiamondBoxBase : MonoBehaviour
 		{
 			CountDownShow(value: false);
 			FreeShow(value: true);
+		
 			return;
 		}
 		FreeShow(value: false);
@@ -166,6 +167,7 @@ public class ShopItemDiamondBoxBase : MonoBehaviour
 	{
         Debug.Log("@LOG UpdateBox");
 		mStartTime = LocalSave.Instance.GetTimeBoxTime(mBoxType);
+		Debug.Log("@LOG mStartTime:" + mStartTime);
 		int timeBoxCount = LocalSave.Instance.GetTimeBoxCount(mBoxType);
 		if (timeBoxCount > 0)
 		{

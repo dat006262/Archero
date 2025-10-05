@@ -7,7 +7,7 @@ public static class DatCheatState
 {
     public static bool isHeroNeverDead = false;
 }
-
+#if UNITY_EDITOR
 public class DatCheatToolBar : EditorWindow
 {
     [MenuItem("DatCheat/Hero Never Dead")]
@@ -42,3 +42,4 @@ public class DatCheatToolBar : EditorWindow
     }
  
 }
+#endif
