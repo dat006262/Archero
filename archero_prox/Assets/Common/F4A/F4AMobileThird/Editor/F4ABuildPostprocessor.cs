@@ -8,14 +8,14 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using System.IO;
-using UnityEditor.iOS.Xcode;
+// using UnityEditor.iOS.Xcode;
 
 public class F4ABuildPostprocessor : MonoBehaviour
 {
     [PostProcessBuildAttribute(1)]
     public static void OnPostprocessBuild(BuildTarget buildTarget, string pathToBuiltProject)
     {
-        Debug.Log("@LOG OnPostprocessBuild target:" + buildTarget + "/path:" + pathToBuiltProject);
+        /*Debug.Log("@LOG OnPostprocessBuild target:" + buildTarget + "/path:" + pathToBuiltProject);
         if (buildTarget == BuildTarget.iOS)
         {
             Debug.Log("[PushNotificationsPostBuildScript] ProcessPostBuild - iOS - Adding Push Notification capabilities.");
@@ -52,6 +52,6 @@ public class F4ABuildPostprocessor : MonoBehaviour
             plist.root.SetString("GADApplicationIdentifier", appId);
             File.WriteAllText(plistPath, plist.WriteToString());
 #endif
-        }
+        }*/
     }
 }
